@@ -8,6 +8,7 @@ export interface PostCSSPrefixWrapOptions {
   prefixRootTags?: boolean;
   whitelist?: Array<string>;
   blacklist?: Array<string>;
+  hasAttribute?: string;
 }
 
 export default class PostCSSPrefixWrap {
@@ -17,6 +18,7 @@ export default class PostCSSPrefixWrap {
   private readonly prefixRootTags: boolean;
   private readonly prefixSelector: string;
   private readonly whitelist: Array<string>;
+  private readonly hasAttribute: string;
 
   constructor(prefixSelector: string, options: PostCSSPrefixWrapOptions = {}) {
     this.blacklist = options.blacklist ?? [];
@@ -26,6 +28,7 @@ export default class PostCSSPrefixWrap {
     this.prefixRootTags = options.prefixRootTags ?? false;
     this.prefixSelector = prefixSelector;
     this.whitelist = options.whitelist ?? [];
+    this.hasAttribute = options.hasAttribute || "";
   }
 
   prefixWrapCSSSelector(
@@ -54,7 +57,14 @@ export default class PostCSSPrefixWrap {
 
     // Anything other than a root tag is always prefixed.
     if (Selector.isNotRootTag(cleanSelector)) {
-      return this.prefixSelector + " " + cleanSelector;
+      let css = `${this.prefixSelector} ${cleanSelector}`;
+      if (Selector.isClassSelector(cleanSelector)) {
+        css = `${css}, ${this.prefixSelector}${cleanSelector}`;
+      }
+      if (this.hasAttribute) {
+        css = `${css},${this.prefixSelector}[${this.hasAttribute}] ${cleanSelector}`;
+      }
+      return css;
     }
 
     // Handle special case where root tags should be converted into classes

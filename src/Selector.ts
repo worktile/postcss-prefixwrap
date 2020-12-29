@@ -2,6 +2,8 @@ import { PostCSSAtRule, PostCSSRule } from "Types";
 
 const ANY_WHITESPACE_AT_BEGINNING_OR_END = /(^\s*|\s*$)/g;
 const IS_ROOT_TAG = /^(body|html).*$/;
+const IS_CLASS_SELECTOR = /^\./;
+const IS_ID_SELECTOR = /^\#/;
 
 export default class Selector {
   static isValid(cssSelector: string | null): boolean {
@@ -27,5 +29,19 @@ export default class Selector {
 
   static isNotRootTag(cleanSelector: string): boolean {
     return !cleanSelector.match(IS_ROOT_TAG);
+  }
+
+  static isTagSelector(cleanSelector: string): boolean {
+    return (
+      this.isIdSelector(cleanSelector) && this.isClassSelector(cleanSelector)
+    );
+  }
+
+  static isIdSelector(cleanSelector: string): boolean {
+    return !!cleanSelector.match(IS_ID_SELECTOR);
+  }
+
+  static isClassSelector(cleanSelector: string): boolean {
+    return !!cleanSelector.match(IS_CLASS_SELECTOR);
   }
 }

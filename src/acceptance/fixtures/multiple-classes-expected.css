@@ -1,8 +1,8 @@
 /* Ensure classes are prefixed. */
-.my-container .something, .my-container .else {
+.my-container .something, .my-container.something, .my-container .else, .my-container.else {
   font-size: 40px;
 }
 
-.my-container .foo, .my-container .bar {
+.my-container .foo, .my-container.foo, .my-container .bar, .my-container.bar {
   font-size: 40px;
 }
