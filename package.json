@@ -1,6 +1,6 @@
 {
-  "name": "postcss-prefixwrap",
-  "version": "1.19.0",
+  "name": "@worktile/planet-postcss-prefixwrap",
+  "version": "1.19.3",
   "description": "A PostCSS plugin that is used to wrap css styles with a css selector to constrain their affect on parent elements in a page.",
   "license": "MIT",
   "author": {
@@ -25,11 +25,15 @@
     "build"
   ],
   "scripts": {
-    "build": "tsc --build ./tsconfig.json && rm -rf ./build/{**/*,*}.spec.js && rm -rf ./build/acceptance && rm -rf ./build/integration",
+    "build": "npm run clean && npm run build-only",
+    "build-only": "tsc --build ./tsconfig.json && rm -rf ./build/{**/*,*}.spec.js && rm -rf ./build/acceptance && rm -rf ./build/integration",
     "clean": "rm -rf ./build/",
+    "copy": "cpx src/package.json build",
     "format": "prettier './**/*.{md,yml,yaml,json,ts,js}' --write && yarn eslint --fix . --ext .js,.ts",
     "lint": "prettier './**/*.{md,yml,yaml,json,ts,js}' --check && yarn eslint . --ext .js,.ts",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "pub-only": "cd build && npm publish --access=public",
+    "pub": "npm run build && npm run pub-only"
   },
   "peerDependencies": {
     "postcss": "7.*.*|^8.1.0"
@@ -54,6 +58,7 @@
     "prettier": "2.1.1",
     "ts-jest": "26.3.0",
     "ts-node": "9.0.0",
-    "typescript": "4.0.2"
+    "typescript": "4.0.2",
+    "cpx": "^1.5.0"
   }
 }
