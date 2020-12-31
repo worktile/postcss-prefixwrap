@@ -1,14 +1,17 @@
 {
   "name": "@worktile/planet-postcss-prefixwrap",
-  "version": "1.19.3",
+  "version": "1.19.4",
   "description": "A PostCSS plugin that is used to wrap css styles with a css selector to constrain their affect on parent elements in a page.",
   "license": "MIT",
   "author": {
     "name": "Daniel Tedman",
     "url": "https://danieltedman.com"
   },
-  "repository": "https://github.com/dbtedman/postcss-prefixwrap",
-  "homepage": "https://github.com/dbtedman/postcss-prefixwrap#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worktile/postcss-prefixwrap.git"
+  },
+  "homepage": "https://github.com/worktile/postcss-prefixwrap#readme",
   "bugs": "https://github.com/dbtedman/postcss-prefixwrap/issues",
   "keywords": [
     "css",
