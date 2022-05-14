@@ -24,7 +24,7 @@ export default class PostCSSPrefixWrap {
     this.blacklist = options.blacklist ?? [];
     this.ignoredSelectors = options.ignoredSelectors ?? [];
     // eslint-disable-next-line security-node/non-literal-reg-expr
-    this.isPrefixSelector = new RegExp(`^s*${prefixSelector}(\s|,)*$`);
+    this.isPrefixSelector = new RegExp(`^s*${prefixSelector}(\s|,)*$`); // eslint-disable-line
     this.prefixRootTags = options.prefixRootTags ?? false;
     this.prefixSelector = prefixSelector;
     this.whitelist = options.whitelist ?? [];
