@@ -23,6 +23,7 @@ export interface PostCSSRule extends PostCSSContainer {
 
 export interface PostCSSAtRule extends PostCSSContainer {
   name: string;
+  params?: string;
 }
 
 export interface PostCSSAcceptedPlugin {
