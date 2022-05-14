@@ -27,6 +27,18 @@ export default class Selector {
     );
   }
 
+  static isMediaPrint(cssRule: PostCSSRule): boolean {
+    const { parent } = cssRule;
+    const parentReal = parent as PostCSSAtRule;
+    return (
+      parent !== undefined &&
+      parentReal.type === "atrule" &&
+      parentReal.name !== undefined &&
+      parentReal.params === "print" &&
+      parentReal.name.match(/media$/) !== null
+    );
+  }
+
   static isNotRootTag(cleanSelector: string): boolean {
     return !cleanSelector.match(IS_ROOT_TAG);
   }

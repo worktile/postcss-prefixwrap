@@ -46,6 +46,11 @@ export default class PostCSSPrefixWrap {
       return cleanSelector;
     }
 
+     // Do not prefix media rules.
+     if(Selector.isMediaPrint(cssRule)) {
+      return cleanSelector;
+    }
+
     // Check for matching ignored selectors
     if (
       this.ignoredSelectors.some((currentValue) =>
