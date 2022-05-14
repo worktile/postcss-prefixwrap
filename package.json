@@ -1,6 +1,6 @@
 {
   "name": "@worktile/planet-postcss-prefixwrap",
-  "version": "1.19.10",
+  "version": "1.19.11",
   "description": "A PostCSS plugin that is used to wrap css styles with a css selector to constrain their affect on parent elements in a page.",
   "license": "MIT",
   "author": {
@@ -39,7 +39,7 @@
     "format": "prettier './**/*.{md,yml,yaml,json,ts,js}' --write && yarn eslint --fix . --ext .js,.ts",
     "lint": "prettier './**/*.{md,yml,yaml,json,ts,js}' --check && yarn eslint . --ext .js,.ts",
     "test": "jest --coverage",
-    "pub-only": "cd build && npm publish --access=public",
+    "pub-only": "npm publish --access=public",
     "pub": "npm run build && npm run pub-only"
   },
   "peerDependencies": {
