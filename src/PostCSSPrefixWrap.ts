@@ -4,6 +4,7 @@ import { PostCSSContainer, PostCSSRule } from "Types";
 export const PLUGIN_NAME = "postcss-prefixwrap";
 
 export interface PostCSSPrefixWrapOptions {
+  prefixSelector?: string;
   ignoredSelectors?: (string | RegExp)[];
   prefixRootTags?: boolean;
   whitelist?: Array<string>;

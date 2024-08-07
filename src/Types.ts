@@ -48,6 +48,5 @@ export interface PostCSS8PostCSS {
 
 export type PostCSS7Plugin = () => PostCSSAcceptedPlugin;
 export type PostCSS8Plugin = (
-  prefixSelector: string,
-  options?: PostCSSPrefixWrapOptions
+  ...reqs: (string | PostCSSPrefixWrapOptions)[]
 ) => PostCSSAcceptedPlugin;
