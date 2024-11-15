@@ -47,6 +47,19 @@ describe("Plugin", () => {
     Assert.strictEqual(cssRule.selector, "");
   });
 
+  it("Plugin.prefixWrapCSSRule() change :root selector with prefix Selector", () => {
+    const plugin = new PostCSSPrefixWrap(prefixSelector, {
+      prefixRootTags: true,
+    });
+    const cssRule = PostCSS.rule({
+      selector: ":root",
+    });
+
+    plugin.prefixWrapCSSRule(cssRule);
+
+    Assert.strictEqual(cssRule.selector, `:root ${prefixSelector}`);
+  });
+
   it("Plugin.prefixWrapCSSRule() prefixes non root selectors with prefix Selector", () => {
     const plugin = new PostCSSPrefixWrap(prefixSelector);
 

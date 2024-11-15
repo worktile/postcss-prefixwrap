@@ -1,7 +1,7 @@
 import { PostCSSAtRule, PostCSSRule } from "Types";
 
 const ANY_WHITESPACE_AT_BEGINNING_OR_END = /(^\s*|\s*$)/g;
-const IS_ROOT_TAG = /^(body|html).*$/;
+const IS_ROOT_TAG = /^(body|html|:root).*$/;
 const IS_CLASS_SELECTOR = /^\./;
 const IS_ID_SELECTOR = /^\#/; // eslint-disable-line
 
