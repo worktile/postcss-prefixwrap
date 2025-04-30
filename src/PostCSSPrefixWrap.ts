@@ -77,7 +77,7 @@ export default class PostCSSPrefixWrap {
     // rather than being replaced.
     if (this.prefixRootTags) {
       if (cleanSelector.startsWith(":root")) {
-        return cleanSelector + " " + this.prefixSelector;
+        return cleanSelector + ", " + cleanSelector + " " + this.prefixSelector;
       }
       return this.prefixSelector + " ." + cleanSelector;
     }

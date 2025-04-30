@@ -57,7 +57,7 @@ describe("Plugin", () => {
 
     plugin.prefixWrapCSSRule(cssRule);
 
-    Assert.strictEqual(cssRule.selector, `:root ${prefixSelector}`);
+    Assert.strictEqual(cssRule.selector, `:root, :root ${prefixSelector}`);
   });
 
   it("Plugin.prefixWrapCSSRule() change :root[theme='dark'] selector with prefix Selector", () => {
@@ -72,7 +72,7 @@ describe("Plugin", () => {
 
     Assert.strictEqual(
       cssRule.selector,
-      `:root[theme='dark'] ${prefixSelector}`
+      `:root[theme='dark'], :root[theme='dark'] ${prefixSelector}`
     );
   });
 
